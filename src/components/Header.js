@@ -1,26 +1,24 @@
-import { AppBar, makeStyles, Toolbar } from '@material-ui/core';
-import React, { useState } from 'react';
+import { AppBar, makeStyles} from '@material-ui/core';
+import { useState } from 'react';
+import Desktop from './Header/Desktop';
+import Mobile from './Header/Mobile';
 
 const Header = () => {
     const classes = useStyle();
-    const displayMobile=()=>{};
-    const displayDesktop=()=>{
-        <Toolbar className={classes.toolbar}>
-            <img src="" alt="logo"/>
-        </Toolbar>
-    };
-    const [mobile, setMobile] = useState(false);
+    const [mobile, setMobile] = useState(true);
     return (
-        <AppBar>
-            {mobile ? displayMobile() : displayDesktop()}
+        <AppBar className={classes.root}>
+            {mobile ? <Mobile /> : <Desktop />}
         </AppBar>
     )
 }
-
-const useStyle = makeStyles((theme)=>{
-    toolbar:{
-        
+const useStyle = makeStyles((theme)=>({
+    root:{
+        position:"sticky",
+        top: 0,
+        background: "#FFF",
+        zIndex:99,
+        width:"100%"
     }
-})
-
+}));
 export default Header
